@@ -22,9 +22,40 @@ body {
 }
 
 .navbar {
+  display: flex;
+  align-items: center;
   font-size: 18px;
   height:50px;
 }
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.droplet-icon {
+    width: 24px;
+    height: auto;
+}
+
+.lifedrop-text {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: red;
+}
+
+@media (max-width: 600px) {
+    .droplet-icon {
+        width: 18px;
+    }
+
+    .lifedrop-text {
+        font-size: 1.2rem;
+    }
+}
+
+
 
 .navbar-toggler, .navbar-toggler.active{
   padding: 0.25rem 0.5rem;
@@ -50,14 +81,23 @@ body {
 .slogan{
   font-size: 40px;
   font-family:'Lato ';
-  color:rgb(158, 13, 13);
-  text-shadow: 0 0 7px rgb(83, 81, 81);
+  background: linear-gradient(to right,black 0%, rgb(111, 107, 107) 30%, rgb(104, 3, 3) 40%);
+  background-clip: text;
+  color: transparent;
+  
 }
 
 .img1{
   width:300px;
   height:300px;
   border-radius: 20px;
+}
+
+footer{
+  position:fixed !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  background-color: inherit;
 }
 
 footer a {
@@ -68,6 +108,69 @@ footer a {
 .nav-link:hover, footer a:hover{
   color: rgb(134, 1, 1) !important;
   font-size: 20px !important;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    background-color: #000;
+    color: white;
+    padding: 50px 0;
+    margin-top: 100px;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-number {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.stat-label {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+
+.card-title{
+  color:rgb(134,1,1);
+}
+
+.text-center1, .text-center2 {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+
+.btn{
+  background-color: rgb(134,1,1);
+  color:white;
+}
+
+.btn:hover{
+  border:1px solid gray;
+}
+
+.d-grid .btn:hover{
+  border:1px solid gray;
+}
+
+.login-link, .register-link{
+  text-decoration: none;
+  color:#3c3737;
+} 
+
+.login-link:hover, .register-link:hover{
+  color:rgb(134,1,1);
 }
 
 
@@ -83,6 +186,7 @@ footer a {
   .navbar {
       flex-direction: column;
       font-size: 14px;
+      width:10%;
   }
 
   .navbar-nav .nav-link {
@@ -91,6 +195,9 @@ footer a {
     padding: 0.5rem;      
   }
 
+  .nav-item{
+    width:10%;
+  }
   
 }
 

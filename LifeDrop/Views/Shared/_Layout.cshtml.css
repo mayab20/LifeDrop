@@ -2,9 +2,9 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+  white-space: nowrap;
+  text-align: left;
+  word-break: normal;
 }
 
 
@@ -15,7 +15,7 @@ a.navbar-brand {
 }
 
 .navbar-brand{
-  color:rgb(172, 4, 4);
+  color:rgb(134,1,1);
   font-weight: 700;
   font-size: 30px;
 }
@@ -23,7 +23,6 @@ a.navbar-brand {
 .nav-item .nav-link.active, .nav-pills .show  {
   color: rgb(134,1,1) !important;
   background-color: transparent;
-  border-color: #1861ac;
 }
 
 .border-top {

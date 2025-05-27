@@ -10,6 +10,9 @@
   perspective: 1000px; 
   margin: auto;
   cursor: pointer;
+  box-shadow: 0 0 15px 5px rgb(171, 166, 166);
+  border-radius: 15px;
+  margin-top: -30px;
 }
 
 .flip-card-inner {
@@ -45,7 +48,7 @@
 }
 
 .flip-card-back {
-  background-color: #318b67;
+  background-color: gray;
   color: white;
   transform: rotateY(180deg);
   padding: 20px;
@@ -57,7 +60,7 @@
     <p class="slogan">Life Flows Through Your Veins.<br>Share It.</p>
 </div>
 
-<div class="flip-card" id="flipCard">
+<div class="flip-card mt-5" id="flipCard">
     <div class="flip-card-inner">
       <div class="flip-card-front">
         <img src="~/images/Home/img1.jpg" alt="Donate" style="width:100%; height:100%; border-radius:10px;">
@@ -68,6 +71,24 @@
       <div class="flip-card-back">
         <p>Thank you for considering donation! You can save lives.</p>
       </div>
+</div>
+
+
+@model IEnumerable<DonationCenter>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center1 mb-5 mt-5 ">
+    <h1 class="display-5 fw-bold">Welcome to the Blood Donation Portal</h1>
+    <p class="lead text-muted">Find and support local blood donation centers.</p>
+</div>
+
+@await Html.PartialAsync("_DonationCenterCards", Model)
+
+<div class="text-center mt-4">
+    <a asp-controller="DonationCenter" asp-action="Index" class="btn btn-primary">View All Centers</a>
 </div>
 
 
