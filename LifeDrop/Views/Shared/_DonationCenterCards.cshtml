@@ -1,23 +1,24 @@
 @model IEnumerable<LifeDrop.Models.DonationCenter>
 
-<div class="container mt-5 px-4">
-    <h3 class="mb-4 text-center">Nearby Donation Centers</h3>
 
-    <div class="row justify-content-center">
-        @foreach (var center in Model)
-        {
-            <div class="col">
-                <div class="card h-100 shadow-sm border-primary">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary fw-bold">@center.CenterName</h5>
-                        <p class="card-text mb-1"><strong>📍 City - Address:</strong> @center.City - @center.Address</p>
-                        <p class="card-text mb-1"><strong>📞 Contact:</strong> @center.ContactNumber</p>
-                    </div>
-                    <div class="card-footer bg-transparent border-top-0 text-end">
-                        <a href="#" class="btn btn-sm btn-outline-primary">More Info</a>
-                    </div>
-                </div>
-            </div>
-        }
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/home.css" />
+}
+
+
+@foreach (var center in Model)
+{
+    <div class="donation-card">
+        <h5 class="card-title">@center.CenterName</h5>
+        <p class="card-text">@center.Address</p>
+        <p class="card-text">@center.City</p>
+        <p class="card-text"><strong>Contact:</strong> @center.ContactNumber</p>
+    
     </div>
-</div>
+}
+
+
+
+
+

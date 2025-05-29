@@ -1,0 +1,60 @@
+@model LifeDrop.ViewModels.AdminDashboardViewModel
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin-dashboard.css" />
+}
+
+<div class="dashboard-container">
+    <h2>Admin Dashboard</h2>
+
+    <div class="stats-box">
+        <div class="stat-card">
+            <h3>@Model.TotalUsers</h3>
+            <p>Total Users</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>@Model.TotalDonations</h3>
+            <p>Total Donations</p>
+        </div>
+    </div>
+
+    <div class="blood-group-section">
+        <h4>Blood Group Distribution</h4>
+        <ul>
+            @foreach (var item in Model.BloodGroupStats)
+            {
+                <li><strong>@item.Key:</strong> @item.Value users</li>
+            }
+        </ul>
+    </div>
+</div>
+
+<div class="admin-sidebar">
+    <h4>Manage Donation Centers</h4>
+    <form asp-action="AddDonationCenter">
+        <input type="text" name="centerName" placeholder="Center Name" required />
+        <input type="text" name="city" placeholder="City" required />
+        <input type="text" name="address" placeholder="Address" required />
+        <input type="text" name="contactNumber" placeholder="Contact Number" required />
+        <button type="submit" class="btn">Add</button>
+        <button type="delete" class="btn">Delete</button>
+    </form>
+
+    <div class="restriction-section">
+        <form method="post" asp-controller="AdminDashboard" asp-action="HandleRestriction" style="display: flex; gap: 10px;">
+            <input type="number" name="userId" placeholder="User ID" required />
+            <button type="submit" name="action" value="restrict" class="btn btn-danger">Restrict</button>
+            <button type="submit" name="action" value="unrestrict" class="btn btn-success">Unrestrict</button>
+        </form>
+    </div>
+
+    <a  class="pending-donation-link" asp-action="PendingDonations" asp-controller="AdminDashboard">
+        <button class="pending-donation-btn">View Pending Donations</button>
+    </a>
+
+</div>

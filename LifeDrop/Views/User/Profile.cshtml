@@ -1,8 +1,59 @@
+@model LifeDrop.ViewModels.ProfileViewModel
+
 @{
     ViewData["Title"] = "Profile";
 }
 
-<h2>Your Profile</h2>
+@section Styles {
+    <link rel="stylesheet" href="~/css/profile.css" />
+}
 
-<p>Welcome, @User.Identity.Name!</p>
-<!-- Add more profile info here -->
+@if (Model != null)
+{
+    <div class="profile-container">
+        <div class="profile-card">
+            <div class="profile-header">
+                <h4 class="profile-name">@Model.FirstName @Model.LastName</h4>
+                <p class="profile-username">@Model.Username</p>
+                <p>@Model.DonationCount <br> <strong>Donations</strong></p>
+
+            </div>
+
+            <hr class="profile-divider" />
+
+            <div class="profile-details">
+                <div class="profile-item">
+                    <strong>Blood Type:</strong>
+                    <div class="profile-value">@Model.BloodGroup</div>
+                </div>
+
+                <div class="profile-item">
+                    <strong>Location:</strong>
+                    <div class="profile-value">@Model.Location</div>
+                </div>
+
+                <div class="profile-item">
+                    <strong>Last Donation:</strong>
+                    <div class="profile-value">
+                        @(Model.LastDonationDate != null 
+                            ? Model.LastDonationDate.Value.ToString("yyyy-MM-dd") 
+                            : "Never donated")
+                    </div>
+                </div>
+
+                <form asp-controller="Account" asp-action="Logout" method="post" class="profile-logout-form">
+                    <button class="profile-logout-btn" type="submit">Logout</button>
+                    @Html.AntiForgeryToken()
+                </form>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="profile-container">
+        <div class="profile-alert">
+            Profile data is not available.
+        </div>
+    </div>
+}

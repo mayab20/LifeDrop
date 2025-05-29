@@ -2,65 +2,19 @@
     ViewData["Title"] = "Home Page";
 }
 
-<style>
-.flip-card {
-  background-color: transparent;
-  width: 300px;    
-  height: 200px;
-  perspective: 1000px; 
-  margin: auto;
-  cursor: pointer;
-  box-shadow: 0 0 15px 5px rgb(171, 166, 166);
-  border-radius: 15px;
-  margin-top: -30px;
+@section Styles {
+    <link rel="stylesheet" href="~/css/home.css" />
 }
 
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-}
+@model IEnumerable<DonationCenter>
 
 
-.flip-card.flipped .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.flip-card-front {
-  background-color: #fff;
-  color: black;
-}
-
-.flip-card-back {
-  background-color: gray;
-  color: white;
-  transform: rotateY(180deg);
-  padding: 20px;
-  box-sizing: border-box;
-}
-</style>
 
 <div class="text-center">
     <p class="slogan">Life Flows Through Your Veins.<br>Share It.</p>
 </div>
 
-<div class="flip-card mt-5" id="flipCard">
+<div class="flip-card" id="flipCard">
     <div class="flip-card-inner">
       <div class="flip-card-front">
         <img src="~/images/Home/img1.jpg" alt="Donate" style="width:100%; height:100%; border-radius:10px;">
@@ -73,23 +27,22 @@
       </div>
 </div>
 
-
-@model IEnumerable<DonationCenter>
-
-@{
-    ViewData["Title"] = "Home";
-}
-
-<div class="text-center1 mb-5 mt-5 ">
-    <h1 class="display-5 fw-bold">Welcome to the Blood Donation Portal</h1>
-    <p class="lead text-muted">Find and support local blood donation centers.</p>
+<div class="welcome-section">
+    <h1 class="welcome-text">Welcome to LifeDrop</h1>
+    <p class="lead">Find and support local blood donation centers.</p>
 </div>
 
-@await Html.PartialAsync("_DonationCenterCards", Model)
+<div class="donation-centers-section">
+    <h2>Nearby Donation Centers</h2>
+    <div class="donation-grid">
+        @await Html.PartialAsync("_DonationCenterCards", Model)
+    </div>
+</div>
 
-<div class="text-center mt-4">
+<div class="view-all-button">
     <a asp-controller="DonationCenter" asp-action="Index" class="btn btn-primary">View All Centers</a>
 </div>
+
 
 
 <script>

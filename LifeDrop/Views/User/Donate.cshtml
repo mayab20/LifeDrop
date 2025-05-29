@@ -1,68 +1,60 @@
-@model LifeDrop.ViewModels.DonationViewModel;
+@model LifeDrop.ViewModels.DonationViewModel
 @{
     ViewData["Title"] = "Donate";
 }
 
-<h2>Donate Blood</h2>
+@section Styles {
+    <link rel="stylesheet" href="~/css/donate.css" />
+}
 
-<p>Thank you for considering a donation. Please fill in the form below.</p>
+<h2 class="donate-title">Donate Blood</h2>
 
-
+<p class="donate-greeting">
+    Thank you,
+    <strong>@($"{Model.FirstName ?? ""} {Model.LastName ?? ""}".Trim())</strong>
+    (<span class="donor-blood">@Model.BloodGroup</span>), for considering a donation.
+</p>
 
 @if (TempData["Success"] != null)
 {
-    <div class="alert alert-success">@TempData["Success"]</div>
+    <div class="donation-success">@TempData["Success"]</div>
 }
 
-<form asp-action="Donate" method="post" class="form">
-    <div class="form-group">
-        <label asp-for="FullName"></label>
-        <input asp-for="FullName" class="form-control" />
-        <span asp-validation-for="FullName" class="text-danger"></span>
+<form asp-action="Donate" method="post" class="donate-form">
+
+    <div class="form-grid">
+        <div class="form-field">
+            <label class="form-label">Name</label>
+            <input class="form-input" value="@($"{Model.FirstName} {Model.LastName}")" readonly />
+        </div>
+
+        <div class="form-field">
+            <label class="form-label">Email</label>
+            <input class="form-input" value="@Model.Email" readonly />
+        </div>
+
+        <div class="form-field">
+            <label asp-for="DonationDate" class="form-label"></label>
+            <input asp-for="DonationDate" type="date" class="form-input" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+            <span asp-validation-for="DonationDate" class="form-error"></span>
+        </div>
+
+        <div class="form-field">
+            <label asp-for="Location" class="form-label"></label>
+            <input asp-for="Location" class="form-input" />
+            <span asp-validation-for="Location" class="form-error"></span>
+        </div>
     </div>
 
-    <div class="form-group">
-        <label asp-for="Email"></label>
-        <input asp-for="Email" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
+    <div class="form-field full-width">
+        <label asp-for="Notes" class="form-label"></label>
+        <textarea asp-for="Notes" class="form-textarea"></textarea>
+        <span asp-validation-for="Notes" class="form-error"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="BloodGroup"></label>
-        <select asp-for="BloodGroup" class="form-control">
-            <option value="">-- Select Blood Group --</option>
-            <option>A+</option>
-            <option>A-</option>
-            <option>B+</option>
-            <option>B-</option>
-            <option>AB+</option>
-            <option>AB-</option>
-            <option>O+</option>
-            <option>O-</option>
-        </select>
-        <span asp-validation-for="BloodGroup" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="DonationDate"></label>
-        <input asp-for="DonationDate" type="date" class="form-control" />
-        <span asp-validation-for="DonationDate" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Location"></label>
-        <input asp-for="Location" class="form-control" />
-        <span asp-validation-for="Location" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Notes"></label>
-        <textarea asp-for="Notes" class="form-control"></textarea>
-        <span asp-validation-for="Notes" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Submit Donation</button>
+    <button type="submit" class="submit-button">Submit Donation</button>
 </form>
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

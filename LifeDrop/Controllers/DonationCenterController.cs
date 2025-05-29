@@ -1,5 +1,7 @@
+using LifeDrop.Models;
 using LifeDrop.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 public class DonationCenterController : Controller
 {
@@ -10,9 +12,4 @@ public class DonationCenterController : Controller
         _context = context;
     }
 
-    public IActionResult Index()
-    {
-        var centers = _context.donationcenters.ToList();
-        return View(centers);
-    }
 }

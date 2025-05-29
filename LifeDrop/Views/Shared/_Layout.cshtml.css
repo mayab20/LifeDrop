@@ -1,50 +1,126 @@
-﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: nowrap;
-  text-align: left;
-  word-break: normal;
+﻿body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.container {
+  max-width: 960px;
+  margin: 20px auto;
+  padding: 0 15px;
 }
 
-.navbar-brand{
-  color:rgb(134,1,1);
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f9fa;
+  padding: 10px 15px;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+  text-decoration: none;
+  color: rgb(134,1,1);
   font-weight: 700;
-  font-size: 30px;
 }
 
-.nav-item .nav-link.active, .nav-pills .show  {
-  color: rgb(134,1,1) !important;
-  background-color: transparent;
+.navbar-toggler {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+.navbar-menu li {
+  display: inline-block;
+}
+
+.navbar-menu a {
+  text-decoration: none;
+  color: #333;
+  padding: 6px 12px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+main {
+  flex: 1;
+  margin-bottom: 50px;
+  padding-bottom:100px;
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
+  background-color: #f1f1f1;
+  text-align: center;
   width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+  height: 50px;
+  position: fixed;
+  bottom:0;
+}
+
+
+.footer .container a {
+  color: rgb(85, 85, 85);
+  text-decoration: none;
+  padding: 4px 6px;
+  border-bottom: 2px solid transparent; 
+  transition: color 0.3s ease,  0.3s ease;
+}
+
+
+.container a:hover, a:hover{
+  color: rgb(134, 1, 1);
+  font-size: 20px ;
+}
+
+
+
+@media (max-width: 600px) {
+    .droplet-icon {
+      width: 18px;
+    }
+
+    .lifedrop-text {
+      font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-toggler {
+      display: block;
+    }
+
+    .navbar-menu {
+    display: none;
+    flex-direction: column;
+    margin-top: 10px;
+    border: none;
+    background-color: white;
+    }
+
+    .navbar-menu.open {
+    display: none;
+    width: 20%;
+    background-color: #f8f9fa;
+    }
+
+    .navbar-menu li {
+      margin: 5px 0;
+    }
 }

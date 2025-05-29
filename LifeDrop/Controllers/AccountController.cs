@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using LifeDrop.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace LifeDrop.Controllers
 {
@@ -68,7 +71,7 @@ namespace LifeDrop.Controllers
                 Password = hashedPassword,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
-                BloodType = model.BloodType,
+                BloodGroup = model.BloodGroup,
                 TelNumber = model.TelNumber,
                 Gender = model.Gender,
                 DateOfBirth = dob,
@@ -96,13 +99,22 @@ namespace LifeDrop.Controllers
             var user = _context.users
                 .FirstOrDefault(u => u.Username == model.UserNameOrEmail || u.Email == model.UserNameOrEmail);
 
+            if (user != null && user.IsRestricted)
+            {
+                ModelState.AddModelError(string.Empty, "Your account has been restricted. Please contact the administrator.");
+                return View(model);
+            }
+
+
             if (user != null && BCrypt.Net.BCrypt.Verify(model.Password, user.Password))
             {
+
                 var claims = new List<Claim>
                 {
                     new(ClaimTypes.Name, user.Username),
                     new(ClaimTypes.Email, user.Email),
-                    new("UserID", user.Id.ToString())
+                    new("UserID", user.Id.ToString()),
+                    new("IsAdmin", user.IsAdmin.ToString())
                 };
 
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -119,6 +131,9 @@ namespace LifeDrop.Controllers
                     principal,
                     authProperties
                 );
+
+
+                HttpContext.Session.SetInt32("IsAdmin", user.IsAdmin ? 1 : 0);
 
                 TempData["SuccessMessage"] = $"Welcome back, {user.Username}!";
                 return RedirectToAction("Index", "Home");
@@ -137,5 +152,6 @@ namespace LifeDrop.Controllers
             TempData["SuccessMessage"] = "You have been logged out.";
             return RedirectToAction(nameof(Login));
         }
+    
     }
 }

@@ -70,7 +70,7 @@ namespace LifeDrop.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("InventoryId"));
 
-                    b.Property<string>("BloodType")
+                    b.Property<string>("BloodGroup")
                         .IsRequired()
                         .HasMaxLength(3)
                         .HasColumnType("varchar(3)");
@@ -164,7 +164,7 @@ namespace LifeDrop.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("BloodType")
+                    b.Property<string>("BloodGroup")
                         .IsRequired()
                         .HasMaxLength(3)
                         .HasColumnType("varchar(3)");

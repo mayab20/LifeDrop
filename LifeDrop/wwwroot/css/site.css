@@ -1,5 +1,7 @@
 html {
   font-size: 14px;
+  position: relative;
+  min-height: 100%;
 }
 
 @media (min-width: 768px) {
@@ -8,84 +10,11 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
 
 body {
   margin-bottom: 60px;
 }
 
-.navbar {
-  display: flex;
-  align-items: center;
-  font-size: 18px;
-  height:50px;
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.droplet-icon {
-    width: 24px;
-    height: auto;
-}
-
-.lifedrop-text {
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: red;
-}
-
-@media (max-width: 600px) {
-    .droplet-icon {
-        width: 18px;
-    }
-
-    .lifedrop-text {
-        font-size: 1.2rem;
-    }
-}
-
-
-
-.navbar-toggler, .navbar-toggler.active{
-  padding: 0.25rem 0.5rem;
-  font-size: 1rem;
-  border: none;         
-  outline: none;        
-  box-shadow: none;
-}
-
-.navbar-toggler-icon {
-  width: 20px;
-  height: 20px;  
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='gray' viewBox='0 0 30 30'%3E%3Cpath stroke='gray' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
-.navbar-toggler:hover,
-.navbar-toggler:focus {
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-}
-
-.slogan{
-  font-size: 40px;
-  font-family:'Lato ';
-  background: linear-gradient(to right,black 0%, rgb(111, 107, 107) 30%, rgb(104, 3, 3) 40%);
-  background-clip: text;
-  color: transparent;
-  
-}
 
 .img1{
   width:300px;
@@ -93,55 +22,12 @@ body {
   border-radius: 20px;
 }
 
-footer{
-  position:fixed !important;
-  bottom: 0 !important;
-  width: 100% !important;
-  background-color: inherit;
-}
 
 footer a {
-  text-decoration: none !important;
-  color: #3c3c3c !important;
+  text-decoration: none;
+  color: #3c3c3c;
 }
 
-.nav-link:hover, footer a:hover{
-  color: rgb(134, 1, 1) !important;
-  font-size: 20px !important;
-}
-
-.stats-container {
-    display: flex;
-    justify-content: center;
-    gap: 100px;
-    background-color: #000;
-    color: white;
-    padding: 50px 0;
-    margin-top: 100px;
-    text-align: center;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-.stat-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.stat-number {
-    font-size: 48px;
-    font-weight: bold;
-}
-
-.stat-label {
-    font-size: 18px;
-    margin-top: 10px;
-}
-
-
-.card-title{
-  color:rgb(134,1,1);
-}
 
 .text-center1, .text-center2 {
   width: 100%;
@@ -151,14 +37,7 @@ footer a {
 }
 
 
-.btn{
-  background-color: rgb(134,1,1);
-  color:white;
-}
 
-.btn:hover{
-  border:1px solid gray;
-}
 
 .d-grid .btn:hover{
   border:1px solid gray;

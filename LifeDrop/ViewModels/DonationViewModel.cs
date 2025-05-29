@@ -1,26 +1,20 @@
 using System.ComponentModel.DataAnnotations;
 
-
 namespace LifeDrop.ViewModels
 {
     public class DonationViewModel
     {
-        [Required]
-        public string? FullName { get; set; }
-
-        [Required]
-        [EmailAddress]
+        // For display only
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
         public string? Email { get; set; }
-
-        [Required]
         public string? BloodGroup { get; set; }
 
-        [Required]
-        [DataType(DataType.Date)]
+        // For user input
+        [Required, DataType(DataType.Date)]
         public DateTime DonationDate { get; set; }
 
-        [Required]
-        public string? Location { get; set; }
+        public required string Location { get; set; }
 
         public string? Notes { get; set; }
     }

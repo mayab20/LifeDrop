@@ -2,45 +2,37 @@
     ViewData["Title"] = "Contact";
 }
 
-<div style="
-    background-image: url('/images/Home/contact-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    min-height: 100vh;
-    width: 100%;
-    padding: 100px;
-    border-radius:15px;">
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6">
-                <div class="card shadow rounded-4 border-0">
-                    <div class="card-body">
-                        <h2 class="card-title text-center  mb-4">Contact Us</h2>
-                        <p class="text-center mb-4">
-                            We'd love to hear from you! Feel free to reach out using the information below.
-                        </p>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex align-items-center">
-                                <i class="bi bi-envelope-fill me-3 text-primary"></i>
-                                <strong>Email:</strong> contact@blooddonation.com
-                            </li>
-                            <li class="list-group-item d-flex align-items-center">
-                                <i class="bi bi-telephone-fill me-3 text-success"></i>
-                                <strong>Phone:</strong> +1 234 567 8900
-                            </li>
-                            <li class="list-group-item d-flex align-items-center">
-                                <i class="bi bi-geo-alt-fill me-3 text-danger"></i>
-                                <strong>Address:</strong> 123 Blood Donation Center, Beirut, Lebanon
-                            </li>
-                        </ul>
+@section Styles {
+    <link rel="stylesheet" href="~/css/contact.css" />
+}
 
-                        <div class="text-center mt-4">
-                            <a href="/Home/Index" class="btn rounded-pill px-4">Return Home</a>
-                        </div>
-                    </div>
-                </div>
+<div class="container">
+    <div class="contact-card">
+        <div class="card-body">
+            <h2 class="card-title">Contact Us</h2>
+            <p class="text-center">
+                We'd love to hear from you! Feel free to reach out using the information below.
+            </p>
+            <ul class="list">
+                <li class="list-item">
+                    <i class="bi bi-envelope-fill me-3"></i>
+                    <strong>Email:</strong>&nbsp; contact@blooddonation.com
+                </li>
+                <li class="list-item">
+                    <i class="bi bi-telephone-fill me-3"></i>
+                    <strong>Phone:</strong>&nbsp; +1 234 567 8900
+                </li>
+                <li class="list-item">
+                    <i class="bi bi-geo-alt-fill me-3"></i>
+                    <strong>Address:</strong>&nbsp; 123 Blood Donation Center, Beirut, Lebanon
+                </li>
+            </ul>
+
+            <div class="ratio ratio-16x9 mb-4 h-20">
+                <iframe 
+                    src="https://www.google.com/maps?q=Beirut,+Lebanon&output=embed"
+                    style="border:0; border-radius:15px;" allowfullscreen loading="lazy">
+                </iframe>
             </div>
         </div>
     </div>

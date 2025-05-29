@@ -18,7 +18,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        var centers = _context.donationcenters.Take(5).ToList();
+        var centers = _context.donationcenters.Take(13).ToList();
         return View(centers);
     }
 

@@ -1,0 +1,44 @@
+@model List<LifeDrop.Models.Donation>
+@{
+    ViewData["Title"] = "Pending Donations";
+}
+
+<h2 class="text-xl font-bold mb-4">Pending Donations</h2>
+
+@if (!Model.Any())
+{
+    <p>No pending donations found.</p>
+}
+else
+{
+    <table class="table table-bordered table-striped w-full text-sm">
+        <thead class="bg-gray-100">
+            <tr>
+                <th>Donor</th>
+                <th>Email</th>
+                <th>Donation Date</th>
+                <th>Location</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var donation in Model)
+        {
+            <tr>
+                <td>@donation.Donor?.FirstName @donation.Donor?.LastName</td>
+                <td>@donation.Donor?.Email</td>
+                <td>@donation.DonationDate.ToString("yyyy-MM-dd")</td>
+                <td>@donation.DonationLocation</td>
+                <td>
+                    <form asp-action="ConfirmDonation" asp-controller="AdminDashboard" method="post" asp-route-id="@donation.DonationId">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn">
+                            Confirm
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

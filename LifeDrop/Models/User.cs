@@ -9,6 +9,8 @@ public partial class User
 
     public bool IsAdmin { get; set; }
 
+    public bool IsRestricted { get; set; } = false;
+
     public string FirstName { get; set; } = null!;
 
     public string LastName { get; set; } = null!;
@@ -19,7 +21,7 @@ public partial class User
 
     public string Email { get; set; } = null!;
 
-    public string BloodType { get; set; } = null!;
+    public string BloodGroup { get; set; } = null!;
 
     public string TelNumber { get; set; } = null!;
 
@@ -30,6 +32,9 @@ public partial class User
     public string Location { get; set; } = null!;
 
     public DateTime? LastDonationDate { get; set; }
+
+    public int DonationCount { get; set; } = 0;
+
 
     public virtual ICollection<Appointment> appointments { get; set; } = new List<Appointment>();
 

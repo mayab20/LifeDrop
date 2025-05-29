@@ -25,7 +25,7 @@ public class RegisterViewModel
   public DateTime? DateOfBirth { get; set; }
 
   [Required]
-  public required string BloodType { get; set; }
+  public required string BloodGroup { get; set; }
 
   [Required]
   public required string Location { get; set; }

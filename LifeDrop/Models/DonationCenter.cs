@@ -17,5 +17,7 @@ public partial class DonationCenter
 
     public virtual ICollection<Appointment> appointments { get; set; } = new List<Appointment>();
 
-    public virtual ICollection<Bloodinventory> bloodinventories { get; set; } = new List<Bloodinventory>();
+    public virtual ICollection<BloodInventory> bloodinventories { get; set; } = new List<BloodInventory>();
+
+
 }

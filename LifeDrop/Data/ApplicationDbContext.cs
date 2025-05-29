@@ -19,7 +19,7 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<Appointment> appointments { get; set; }
 
-    public virtual DbSet<Bloodinventory> bloodinventories { get; set; }
+    public virtual DbSet<BloodInventory> bloodinventories { get; set; }
 
     public virtual DbSet<Donation> donations { get; set; }
 
@@ -58,7 +58,7 @@ public partial class ApplicationDbContext : DbContext
                 .HasConstraintName("appointment_ibfk_1");
         });
 
-        modelBuilder.Entity<Bloodinventory>(entity =>
+        modelBuilder.Entity<BloodInventory>(entity =>
         {
             entity.HasKey(e => e.InventoryId).HasName("PRIMARY");
 
@@ -66,9 +66,9 @@ public partial class ApplicationDbContext : DbContext
 
             entity.HasIndex(e => e.CenterId, "CenterId");
 
-            entity.Property(e => e.BloodType).HasMaxLength(3);
+            entity.Property(e => e.BloodGroup).HasMaxLength(3);
 
-            entity.HasOne(d => d.Center).WithMany(p => p.bloodinventories)
+            entity.HasOne(d => d.Center).WithMany( p => p.bloodinventories)
                 .HasForeignKey(d => d.CenterId)
                 .HasConstraintName("bloodinventory_ibfk_1");
         });
@@ -117,7 +117,7 @@ public partial class ApplicationDbContext : DbContext
 
             entity.HasIndex(e => e.Username, "Username").IsUnique();
 
-            entity.Property(e => e.BloodType).HasMaxLength(3);
+            entity.Property(e => e.BloodGroup).HasMaxLength(3);
             entity.Property(e => e.FirstName).HasMaxLength(255);
             entity.Property(e => e.Gender).HasMaxLength(20);
             entity.Property(e => e.LastName).HasMaxLength(255);

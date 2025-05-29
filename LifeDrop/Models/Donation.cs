@@ -14,8 +14,12 @@ public partial class Donation
     public string DonationLocation { get; set; } = null!;
 
     public int RecipientId { get; set; }
+    public bool IsConfirmed { get; set; } = false;
 
     public virtual User Donor { get; set; } = null!;
 
     public virtual User Recipient { get; set; } = null!;
+
+    
+
 }
