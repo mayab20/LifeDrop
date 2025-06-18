@@ -92,7 +92,7 @@ public class AdminDashboardController : Controller
 
         donation.IsConfirmed = true;
         user.DonationCount += 1;
-
+        user.LastDonationDate = DateTime.Today;
         _context.SaveChanges();
 
         TempData["Success"] = "Donation confirmed.";

@@ -48,6 +48,7 @@ public partial class ApplicationDbContext : DbContext
 
             entity.Property(e => e.Status).HasMaxLength(20);
             entity.Property(e => e.TimeSlot).HasColumnType("time");
+            
 
             entity.HasOne(d => d.Center).WithMany(p => p.appointments)
                 .HasForeignKey(d => d.CenterId)
@@ -125,6 +126,7 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.Password).HasMaxLength(100);
             entity.Property(e => e.TelNumber).HasMaxLength(20);
             entity.Property(e => e.Username).HasMaxLength(20);
+            
         });
 
         OnModelCreatingPartial(modelBuilder);
