@@ -103,15 +103,15 @@ body,html {
 }
 
 @media (min-width: 600px) {
-    .donation-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .donation-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 900px) {
-    .donation-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+  .donation-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .donation-card {
@@ -124,16 +124,16 @@ body,html {
 }
 
 .donation-card:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .card-title {
-    font-size: 1.2rem;
-    color: rgb(134,1,1);
-    margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: rgb(134,1,1);
+  margin-bottom: 0.5rem;
 }
 
 .card-text {
-    margin: 0.25rem 0;
-    color: #333;
+  margin: 0.25rem 0;
+  color: #333;
 }
