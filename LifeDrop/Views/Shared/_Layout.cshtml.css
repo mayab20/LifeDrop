@@ -1,17 +1,44 @@
-﻿body {
-  font-family: Arial, sans-serif;
+﻿/* ----------------------- */
+/* 1. Base Layout & Body   */
+/* ----------------------- */
+/* 1. Make body take full viewport */
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
+  background-color: #ffffff;
 }
 
+/* 2. Wrap all content in a page wrapper */
+body {
+  display: block;
+  min-height: 100vh; /* full height */
+  position: relative;
+  padding-bottom: 60px; /* space for footer */
+}
+
+/* 3. Main content */
+main {
+  padding: 20px;
+}
+
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Container */
 .container {
   max-width: 960px;
   margin: 20px auto;
   padding: 0 15px;
 }
 
+/* ----------------------- */
+/* 2. Navbar               */
+/* ----------------------- */
 .navbar {
   display: flex;
   flex-wrap: wrap;
@@ -59,68 +86,132 @@
   font-weight: 500;
 }
 
-main {
-  flex: 1;
-  margin-bottom: 50px;
-  padding-bottom:100px;
-}
-
-.footer {
+/* ----------------------- */
+/* 3. Footer               */
+/* ----------------------- */
+footer {
   background-color: #f1f1f1;
   text-align: center;
   width: 100%;
-  height: 50px;
+  padding: 5px 0;
   position: fixed;
-  bottom:0;
+  bottom: 0;
+  left: 0;
+  height: 60px; /* must match body padding-bottom */
 }
-
 
 .footer .container a {
   color: rgb(85, 85, 85);
   text-decoration: none;
   padding: 4px 6px;
   border-bottom: 2px solid transparent; 
-  transition: color 0.3s ease,  0.3s ease;
+  transition: color 0.3s ease, 0.3s ease;
 }
 
-
-.container a:hover, a:hover{
+.container a:hover,
+a:hover {
   color: rgb(134, 1, 1);
-  font-size: 20px ;
+  font-size: 20px;
 }
 
+/* ----------------------- */
+/* 4. Page-specific styles */
+/* ----------------------- */
+.img1 {
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+}
 
+.text-center1, .text-center2 {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
 
-@media (max-width: 600px) {
-    .droplet-icon {
-      width: 18px;
-    }
+.d-grid .btn:hover {
+  border: 1px solid gray;
+}
 
-    .lifedrop-text {
-      font-size: 1.2rem;
-    }
+.login-link, .register-link {
+  text-decoration: none;
+  color: #3c3737;
+} 
+
+.login-link:hover, .register-link:hover {
+  color: rgb(134,1,1);
+}
+
+/* Form placeholders alignment */
+.form-floating > .form-control-plaintext::placeholder,
+.form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder,
+.form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+/* ----------------------- */
+/* 5. Responsive Queries   */
+/* ----------------------- */
+@media (max-width: 991.98px) {
+  .navbar {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 768px) {
-    .navbar-toggler {
-      display: block;
-    }
+  .navbar-toggler {
+    display: block;
+  }
 
-    .navbar-menu {
+  .navbar-menu {
     display: none;
     flex-direction: column;
     margin-top: 10px;
     border: none;
     background-color: white;
-    }
+  }
 
-    .navbar-menu.open {
-    display: none;
-    width: 20%;
+  .navbar-menu.open {
+    display: flex;
+    width: 100%;
     background-color: #f8f9fa;
-    }
+  }
 
-    .navbar-menu li {
-      margin: 5px 0;
-    }
+  .navbar-menu li {
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .navbar {
+    flex-direction: column;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .navbar-nav .nav-link {
+    width: 100%;        
+    text-align: center; 
+    padding: 0.5rem;      
+  }
+
+  .nav-item {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .droplet-icon {
+    width: 18px;
+  }
+
+  .lifedrop-text {
+    font-size: 1.2rem;
+  }
 }
