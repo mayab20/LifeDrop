@@ -2,12 +2,46 @@
 using LifeDrop.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using Amazon.SecretsManager;
+using Amazon.SecretsManager.Model;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
+string connectionString;
+
+var secretArn = Environment.GetEnvironmentVariable("DB_SECRET_ARN");
+
+if (!string.IsNullOrEmpty(secretArn))
+{
+    // Running on Elastic Beanstalk
+    var client = new AmazonSecretsManagerClient();
+
+    var response = client.GetSecretValueAsync(new GetSecretValueRequest
+    {
+        SecretId = secretArn
+    }).GetAwaiter().GetResult();
+
+    var secret =
+        JsonSerializer.Deserialize<Dictionary<string, string>>(response.SecretString);
+
+    connectionString =
+        $"Server={secret["DB_HOST"]};" +
+        $"Port={secret["DB_PORT"]};" +
+        $"Database={secret["DB_NAME"]};" +
+        $"User={secret["DB_USER"]};" +
+        $"Password={secret["DB_PASSWORD"]};";
+}
+else
+{
+    // Local development (keeps your existing setup)
+    connectionString = builder.Configuration.GetConnectionString("BloodDonationConnection");
+}
+
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(
-        builder.Configuration.GetConnectionString("BloodDonationConnection"),
+        connectionString,
         ServerVersion.Parse("8.0.41-mysql")
     ));
 

@@ -1,0 +1,52 @@
+body {
+  background: linear-gradient(to top left, rgb(141, 138, 138) 10%,rgb(165, 164, 164) 30%,rgb(229, 227, 227) 50%);
+  background-repeat: no-repeat;
+}
+
+.contact-card {
+  animation: fadeInUp 0.8s ease-in-out;
+  background-color: rgb(255, 255, 255);
+  height:400px;
+  padding:20px;
+  border-radius:20px;
+  margin-top: 20px;
+}
+
+.text-center{
+    color: gray;
+    font-weight: bold;
+}
+
+.card-title{
+    font-weight: bolder;
+    text-align: center;
+    font-size: 30px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.list-group-item i {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.btn {
+    border-radius :10px;;
+    background-color: rgb(134,1,1);
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: white;
+    color:#3c3737;
+}

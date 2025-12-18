@@ -1,0 +1,218 @@
+/* _content/LifeDrop/Views/Shared/_Layout.cshtml.rz.scp.css */
+/* ----------------------- */
+/* 1. Base Layout & Body   */
+/* ----------------------- */
+/* 1. Make body take full viewport */
+html[b-t8368x7ft9], body[b-t8368x7ft9] {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+}
+
+/* 2. Wrap all content in a page wrapper */
+body[b-t8368x7ft9] {
+  display: block;
+  min-height: 100vh; /* full height */
+  position: relative;
+  padding-bottom: 60px; /* space for footer */
+}
+
+/* 3. Main content */
+main[b-t8368x7ft9] {
+  padding: 20px;
+}
+
+
+@media (min-width: 768px) {
+  html[b-t8368x7ft9] {
+    font-size: 16px;
+  }
+}
+
+/* Container */
+.container[b-t8368x7ft9] {
+  max-width: 960px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+/* ----------------------- */
+/* 2. Navbar               */
+/* ----------------------- */
+.navbar[b-t8368x7ft9] {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f9fa;
+  padding: 10px 15px;
+}
+
+.navbar-brand[b-t8368x7ft9] {
+  font-size: 2rem;
+  text-decoration: none;
+  color: rgb(134,1,1);
+  font-weight: 700;
+}
+
+.navbar-toggler[b-t8368x7ft9] {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
+
+.navbar-menu[b-t8368x7ft9] {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu li[b-t8368x7ft9] {
+  display: inline-block;
+}
+
+.navbar-menu a[b-t8368x7ft9] {
+  text-decoration: none;
+  color: #333;
+  padding: 6px 12px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* ----------------------- */
+/* 3. Footer               */
+/* ----------------------- */
+footer[b-t8368x7ft9] {
+  background-color: #f1f1f1;
+  text-align: center;
+  width: 100%;
+  padding: 5px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 60px; /* must match body padding-bottom */
+}
+
+.footer .container a[b-t8368x7ft9] {
+  color: rgb(85, 85, 85);
+  text-decoration: none;
+  padding: 4px 6px;
+  border-bottom: 2px solid transparent; 
+  transition: color 0.3s ease, 0.3s ease;
+}
+
+.container a:hover[b-t8368x7ft9],
+a:hover[b-t8368x7ft9] {
+  color: rgb(134, 1, 1);
+  font-size: 20px;
+}
+
+/* ----------------------- */
+/* 4. Page-specific styles */
+/* ----------------------- */
+.img1[b-t8368x7ft9] {
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+}
+
+.text-center1[b-t8368x7ft9], .text-center2[b-t8368x7ft9] {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.d-grid .btn:hover[b-t8368x7ft9] {
+  border: 1px solid gray;
+}
+
+.login-link[b-t8368x7ft9], .register-link[b-t8368x7ft9] {
+  text-decoration: none;
+  color: #3c3737;
+} 
+
+.login-link:hover[b-t8368x7ft9], .register-link:hover[b-t8368x7ft9] {
+  color: rgb(134,1,1);
+}
+
+/* Form placeholders alignment */
+.form-floating > .form-control-plaintext[b-t8368x7ft9]::placeholder,
+.form-floating > .form-control[b-t8368x7ft9]::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus[b-t8368x7ft9]::placeholder,
+.form-floating > .form-control:focus[b-t8368x7ft9]::placeholder {
+  text-align: start;
+}
+
+/* ----------------------- */
+/* 5. Responsive Queries   */
+/* ----------------------- */
+@media (max-width: 991.98px) {
+  .navbar[b-t8368x7ft9] {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-toggler[b-t8368x7ft9] {
+    display: block;
+  }
+
+  .navbar-menu[b-t8368x7ft9] {
+    display: none;
+    flex-direction: column;
+    margin-top: 10px;
+    border: none;
+    background-color: white;
+  }
+
+  .navbar-menu.open[b-t8368x7ft9] {
+    display: flex;
+    width: 100%;
+    background-color: #f8f9fa;
+  }
+
+  .navbar-menu li[b-t8368x7ft9] {
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .navbar[b-t8368x7ft9] {
+    flex-direction: column;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .navbar-nav .nav-link[b-t8368x7ft9] {
+    width: 100%;        
+    text-align: center; 
+    padding: 0.5rem;      
+  }
+
+  .nav-item[b-t8368x7ft9] {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .droplet-icon[b-t8368x7ft9] {
+    width: 18px;
+  }
+
+  .lifedrop-text[b-t8368x7ft9] {
+    font-size: 1.2rem;
+  }
+}
