@@ -16,7 +16,7 @@ builder.WebHost.ConfigureKestrel(options =>
 });
 
 
-string connectionString;
+string connectionString= null!;
 
 var secretArn = Environment.GetEnvironmentVariable("arn:aws:secretsmanager:eu-north-1:852353855179:secret:rds!db-599802f2-b559-4c0c-be7f-b417dc0de006-P7ow3I");
 
@@ -40,18 +40,17 @@ if (!string.IsNullOrEmpty(secretArn))
         $"User={secret["DB_User"]};" +
         $"Password={secret["DB_Password"]};";
 }
-// else
-// {
-//     // Local development (keeps your existing setup)
-//     connectionString = builder.Configuration.GetConnectionString("BloodDonationConnection");
-// }
+else
+{
+    throw new Exception("AWS Secret ARN not found. Cannot connect to database.");
+}
 
 
-// builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//     options.UseMySql(
-//         connectionString,
-//         ServerVersion.Parse("8.0.41-mysql")
-//     ));
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseMySql(
+        connectionString,
+        ServerVersion.Parse("8.0.41-mysql")
+    ));
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
