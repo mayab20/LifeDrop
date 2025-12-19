@@ -8,6 +8,14 @@ using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(int.Parse(port));
+});
+
+
 string connectionString;
 
 var secretArn = Environment.GetEnvironmentVariable("DB_SECRET_ARN");
@@ -26,24 +34,24 @@ if (!string.IsNullOrEmpty(secretArn))
         JsonSerializer.Deserialize<Dictionary<string, string>>(response.SecretString);
 
     connectionString =
-        $"Server={secret["DB_HOST"]};" +
-        $"Port={secret["DB_PORT"]};" +
-        $"Database={secret["DB_NAME"]};" +
-        $"User={secret["DB_USER"]};" +
-        $"Password={secret["DB_PASSWORD"]};";
+        $"Server={secret["DB_Host"]};" +
+        $"Port={secret["DB_Port"]};" +
+        $"Database={secret["DB_Name"]};" +
+        $"User={secret["DB_User"]};" +
+        $"Password={secret["DB_Password"]};";
 }
-else
-{
-    // Local development (keeps your existing setup)
-    connectionString = builder.Configuration.GetConnectionString("BloodDonationConnection");
-}
+// else
+// {
+//     // Local development (keeps your existing setup)
+//     connectionString = builder.Configuration.GetConnectionString("BloodDonationConnection");
+// }
 
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySql(
-        connectionString,
-        ServerVersion.Parse("8.0.41-mysql")
-    ));
+// builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//     options.UseMySql(
+//         connectionString,
+//         ServerVersion.Parse("8.0.41-mysql")
+//     ));
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
@@ -79,7 +87,11 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+if (!app.Environment.IsDevelopment())
+{
+    // Do NOT redirect HTTPS in Elastic Beanstalk Linux
+}
+
 app.UseStaticFiles();
 
 app.UseRouting();
