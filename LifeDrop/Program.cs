@@ -18,7 +18,7 @@ builder.WebHost.ConfigureKestrel(options =>
 
 string connectionString;
 
-var secretArn = Environment.GetEnvironmentVariable("DB_SECRET_ARN");
+var secretArn = Environment.GetEnvironmentVariable("arn:aws:secretsmanager:eu-north-1:852353855179:secret:rds!db-599802f2-b559-4c0c-be7f-b417dc0de006-P7ow3I");
 
 if (!string.IsNullOrEmpty(secretArn))
 {
