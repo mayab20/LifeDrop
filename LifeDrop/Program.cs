@@ -8,17 +8,9 @@ using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
-
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.ListenAnyIP(int.Parse(port));
-});
-
-
 string connectionString= null!;
 
-var secretArn = Environment.GetEnvironmentVariable("arn:aws:secretsmanager:eu-north-1:852353855179:secret:rds!db-599802f2-b559-4c0c-be7f-b417dc0de006-P7ow3I");
+var secretArn = Environment.GetEnvironmentVariable("DB_SECRET_ARN");
 
 if (!string.IsNullOrEmpty(secretArn))
 {
@@ -49,7 +41,7 @@ else
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(
         connectionString,
-        ServerVersion.Parse("8.0.41-mysql")
+        ServerVersion.Parse("8.0.43-mysql")
     ));
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
